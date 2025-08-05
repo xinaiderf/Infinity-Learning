@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    height: 100vh;
+    max-width: 200px;
+
+}
+
+.card{
+    background-color: blueviolet;
+    width: 100%;
+    height: 100%;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 0;
+  background: none;
+  color: white;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+.button:hover{
+    background-color: #808080;
+}
