@@ -57,6 +57,13 @@ O projeto propõe uma solução baseada na aplicação de elementos de jogos, co
 - **Risco de Evasão:** Possibilidade de reescopo do projeto em caso de saída de integrantes do grupo acadêmico.
 
 ---
+
+## 💻 Tecnologias
+
+- Backend: NestJS
+- Frontend: Vite React
+
+---
 <p align="center">
 Desenvolvido como parte do processo de graduação em TADS - UNIDERP 🎓
 </p>
