@@ -62,7 +62,8 @@ O projeto propõe uma solução baseada na aplicação de elementos de jogos, co
 
 - Backend: NestJS
 - Frontend: Vite React
-
+- Banco de dados: Postgres
+- ORM: Prisma
 ---
 <p align="center">
 Desenvolvido como parte do processo de graduação em TADS - UNIDERP 🎓
