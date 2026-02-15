@@ -44,22 +44,6 @@ O projeto propõe uma solução baseada na aplicação de elementos de jogos, co
    - Atribuição automatizada de **XP** e **Insígnias**.
    - Rankings baseados na qualidade técnica e otimização do código.
 
----
-
-## 👥 Equipe e Stakeholders
-
-* **Patrocinador:** UNIDERP
-* **Orientador:** Prof. Luiz Augusto Jacinto Rodrigues
-
-### Time de Desenvolvimento:
-- **Gerenciamento de Projeto:** [Gabriel Schneider Ferreira](https://github.com/xinaiderf)
-- **Desenvolvedores:** - João Roberto Amaral
-  - Heytor Felix Romeu
-  - Guilherme Yoshimura Ifran
-  - João Vitor Almeida Silva
-
----
-
 ## ⏳ Linha do Tempo e Premissas
 
 - **Cronograma:** 5 semestres letivos (do levantamento de requisitos à homologação).
