@@ -7,9 +7,10 @@ datasource db {
   provider = "postgresql"
 }
 
-enum BadgeTier {
-  NOOB
-  REI
+
+enum ClassType {
+  MAGE
+  ESPADACHIM
 }
 
 // ##### INICIO USERS #####
@@ -21,62 +22,119 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  badges    UserBadge[]
+  UserTitle   UserTitle[]
+  UserClass UserClass[]
+  UserStat UserStat[]
+  QuestSubmission QuestSubmission[]
 }
 // #######################
 
 
 // ##### INICIO BADGES #####
-model Badge {
+model Title {
   id String @id @default(uuid()) @db.Uuid
   name String @db.Text
   description String @db.Text
   imageUrl String? @db.Text
-  tier BadgeTier
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
-  UserBadges UserBadge[]
+  UserTitle UserTitle[]
 
 }
 
-model UserBadge {
+model UserTitle {
   userId String @db.Uuid
-  badgeId String @db.Uuid
+  titleId String @db.Uuid
   createdAt DateTime @default(now())
   
-  User User @relation(fields: [userId], references: [id])
-  Badges Badge @relation(fields: [badgeId], references: [id])
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Title Title @relation(fields: [titleId], references: [id], onDelete: Restrict)
 
-  @@id([userId, badgeId])
+  @@id([userId, titleId])
 }
 
 
 // #######################
 
-// ##### INICIO ROOMS #####
-model Room {
+model Class {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(255)
+  type ClassType
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  UserClass UserClass[]
+}
+
+model UserClass {
+  userId String @db.Uuid
+  classId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Class Class @relation(fields: [classId], references: [id], onDelete: Restrict)
+
+  @@id([userId, classId])
+}
+
+// ##### INICIO DUNGEON #####
+model Dungeon {
 
 }
 
-model UserRoom {
+model UserDungeon {
+
 
 }
 // #######################
 
 
-// ##### INICIO QUESTS #####
+// ##### INICIO QUEST #####
 model Quest {
+  id String @id @default(uuid()) @db.Uuid
+  title String @db.Text
+  description String @db.Text
+  codeExample String? @db.Text
+  minLevel Int @default(1)
 
+  xpGain Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  QuestSubmission QuestSubmission[]
 }
 
-model UserQuest {
+model QuestSubmission {
+  id String @id @default(uuid()) @db.Uuid
+  code String @db.Text
+  status String @db.VarChar(255)
+  rate Int // 1 a 10
+  reviewIA String @db.Text
+  attempts Int @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String @db.Uuid
+  questId String @db.Uuid
+  
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Quest Quest @relation(fields: [questId], references: [id], onDelete: Restrict)
 
 }
 // #######################
 
 
 model UserStat {
+  id String @id @default(uuid()) @db.Uuid
+  level Int @default(1)
+  xp Int @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
+  userId String @db.Uuid @unique
+
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade) 
 }
